@@ -6,23 +6,14 @@
     <description>Recent content in Babak Ahmadi on Babak Ahmadi&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 10 Oct 2021 11:00:59 -0400</lastBuildDate><atom:link href="https://babakahmadi.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 Nov 2021 10:58:08 -0400</lastBuildDate><atom:link href="https://babakahmadi.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Second Blog</title>
-      <link>https://babakahmadi.github.io/post/chapter-2/</link>
-      <pubDate>Sun, 10 Oct 2021 11:00:59 -0400</pubDate>
+      <title>Sorting Algorithms</title>
+      <link>https://babakahmadi.github.io/post/post_001_sorting/</link>
+      <pubDate>Wed, 17 Nov 2021 10:58:08 -0400</pubDate>
       
-      <guid>https://babakahmadi.github.io/post/chapter-2/</guid>
-      <description>My second blog.</description>
-    </item>
-    
-    <item>
-      <title>First Blog</title>
-      <link>https://babakahmadi.github.io/post/chapter-1/</link>
-      <pubDate>Sat, 09 Oct 2021 10:58:08 -0400</pubDate>
-      
-      <guid>https://babakahmadi.github.io/post/chapter-1/</guid>
-      <description>My first blog.</description>
+      <guid>https://babakahmadi.github.io/post/post_001_sorting/</guid>
+      <description>You know, sorting is one of the most famous algorithms that used in IT world. Here I want to do some discussion about some of sorting algorithms and at the same time, use some ideas to optimize sorting algrithm in the specific problem. Optimization is the heart of data and it can be used distinctively based on the application.</description>
     </item>
     
     <item>
