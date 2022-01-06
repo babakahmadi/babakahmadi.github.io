@@ -6,16 +6,7 @@
     <description>Recent content in Babak Ahmadi on Babak Ahmadi&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 17 Nov 2021 10:58:08 -0400</lastBuildDate><atom:link href="https://babakahmadi.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Sorting Algorithms</title>
-      <link>https://babakahmadi.github.io/post/post_001_sorting/</link>
-      <pubDate>Wed, 17 Nov 2021 10:58:08 -0400</pubDate>
-      
-      <guid>https://babakahmadi.github.io/post/post_001_sorting/</guid>
-      <description>You know, sorting is one of the most famous algorithms that used in IT world. Here I want to do some discussion about some of sorting algorithms and at the same time, use some ideas to optimize sorting algrithm in the specific problem. Optimization is the heart of data and it can be used distinctively based on the application.</description>
-    </item>
-    
+    <lastBuildDate>Sat, 02 Oct 2021 12:00:00 -0500</lastBuildDate><atom:link href="https://babakahmadi.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Contact</title>
       <link>https://babakahmadi.github.io/contact/</link>
