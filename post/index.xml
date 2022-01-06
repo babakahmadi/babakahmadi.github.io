@@ -22,7 +22,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://babakahmadi.github.io/post/post_000_solidprinciple/</guid>
-      <description>As a programmer, I review a lot of codes(specially in java) and I saw a lot of problems in them. One of the most common problems that I saw is based on the SOLID principles. You know, when I started programming with java, I had these kind of problems too and I didn&amp;rsquo;t know these principles but after knowing that, my codes were better than before and I think these kind of principles prevents us from very large number of issues in programming, so I think it would be great to write a blog about it.</description>
+      <description>As a programmer, I reviewed a lot of codes(specially in java) and I saw a lot of problems in them. One of the most common problems that I saw is violating the SOLID principles. You know, when I started programming with java, I had these kind of problems too and I didn&amp;rsquo;t know these principles but after knowing that, my codes were better than before and I think these kind of principles prevents us from very large number of issues in programming and help us to scale our code, so it would be great to write a blog about it.</description>
     </item>
     
   </channel>

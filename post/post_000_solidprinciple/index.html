@@ -34,7 +34,7 @@
 <meta itemprop="name" content="Solid Principles">
 <meta itemprop="description" content="Solid Principles">
 
-<meta itemprop="wordCount" content="1008">
+<meta itemprop="wordCount" content="1035">
 
 
 
@@ -223,7 +223,8 @@
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>As a programmer, I review a lot of codes(specially in java) and I saw a lot of problems in them. One of the most common problems that I saw is based on the SOLID principles. You know, when I started programming with java, I had these kind of problems too and I didn&rsquo;t know these principles but after knowing that, my codes were better than before and I think these kind of principles prevents us from very large number of issues in programming, so I think it would be great to write a blog about it. Here, I try to define these principles and tell some examples that would be good for better understanding (all my examples will be in java).</p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>As a programmer, I reviewed a lot of codes(specially in java) and I saw a lot of problems in them. One of the most common problems that I saw is violating the SOLID principles. You know, when I started programming with java, I had these kind of problems too and I didn&rsquo;t know these principles but after knowing that, my codes were better than before and I think these kind of principles prevents us from very large number of issues in programming and help us to scale our code, so it would be great to write a blog about it. Here, I try to define these principles and tell some examples that would be good for better understanding (all my examples will be in java).</p>
+<p><strong>hint</strong>: I used to lombok annotations, to know about that you can check this <a href="https://www.baeldung.com/intro-to-project-lombok">lombok</a></p>
 <p>SOLID is acronym of five principles in object oriented design which is declared by <a href="https://en.wikipedia.org/wiki/Robert_C._Martin">uncle Bob</a>.  SOLID principles stands for:</p>
 <ul>
 <li><strong>S</strong> ingle-Responsiblity</li>
@@ -233,7 +234,8 @@
 <li><strong>D</strong> ependency Inversion</li>
 </ul>
 <p>Before every step, I think it&rsquo;s good to show the first implementation of Order and Payment for our basic and naive service.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Order</span><span style="color:#f92672">{</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Slf4j</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Order</span><span style="color:#f92672">{</span>
     List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> items<span style="color:#f92672">;</span>
     List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> quantities<span style="color:#f92672">;</span>
     List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> prices<span style="color:#f92672">;</span>
@@ -271,7 +273,8 @@
 </code></pre></div><p>Here we have an <code>Order</code> class that has some attributes about the order: <code>items</code>, <code>quantities</code>, <code>prices</code> and <code>status</code>. This class has some methods to add item, calculate price and pay the order.So, after introducing our base code, lets go the the main topic.</p>
 <h3 id="__single-responsibility__"><strong>Single responsibility</strong></h3>
 <p><em>A class should do one thing and therefore it should have only a single reason to change.</em> lets take a look back on our first implementation. The <code>Order</code> class is something about order, so <code>addItem</code> and <code>calculatePrice</code> are its responsibility but as it&rsquo;s clear the <code>pay</code> method is not responsibilty of the Order. why? because it&rsquo;s about payment. It&rsquo;s very obvious that this functionality needs to be extracted from the order and goes to another class.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaymentService</span><span style="color:#f92672">{</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Slf4j</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaymentService</span><span style="color:#f92672">{</span>
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">payDebit</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> amount<span style="color:#f92672">,</span> Order order<span style="color:#f92672">,</span> String securityCode<span style="color:#f92672">){</span>
         log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Processing with debit for amount {}  with security code {}&#34;</span><span style="color:#f92672">,</span> amount<span style="color:#f92672">,</span> securityCode<span style="color:#f92672">);</span>
         order<span style="color:#f92672">.</span><span style="color:#a6e22e">setStatus</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;paid&#34;</span><span style="color:#f92672">);</span>
@@ -288,6 +291,7 @@
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pay</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> amount<span style="color:#f92672">,</span> Order order<span style="color:#f92672">,</span> String securityCode<span style="color:#f92672">);</span>
 <span style="color:#f92672">}</span>
 
+<span style="color:#a6e22e">@Slf4j</span>
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DebitPaymentService</span> <span style="color:#66d9ef">extends</span> PaymentService<span style="color:#f92672">{</span>
     <span style="color:#a6e22e">@Override</span>
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pay</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> amount<span style="color:#f92672">,</span> Order order<span style="color:#f92672">,</span> String securityCode<span style="color:#f92672">){</span>
@@ -297,6 +301,7 @@
 
 <span style="color:#f92672">}</span>
 
+<span style="color:#a6e22e">@Slf4j</span>
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CreditPaymentService</span> <span style="color:#66d9ef">extends</span> PaymentService<span style="color:#f92672">{</span>
     <span style="color:#a6e22e">@Override</span>
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pay</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> amount<span style="color:#f92672">,</span> Order order<span style="color:#f92672">,</span> String securityCode<span style="color:#f92672">){</span>
@@ -306,7 +311,8 @@
 <span style="color:#f92672">}</span>
 
 </code></pre></div><p>With this change, we don&rsquo;t violate the <code>Open-Closed</code> principle, because if we need to add new payment method like paypal, we can add new class that inherits the <code>PaymentService</code> and we don&rsquo;t need to modify the classes (and we can extend the the classes). Here you are:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaypalPaymentService</span> <span style="color:#66d9ef">extends</span> PaymentService<span style="color:#f92672">{</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Slf4j</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaypalPaymentService</span> <span style="color:#66d9ef">extends</span> PaymentService<span style="color:#f92672">{</span>
     <span style="color:#a6e22e">@Override</span>
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pay</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> amount<span style="color:#f92672">,</span> Order order<span style="color:#f92672">,</span> String securityCode<span style="color:#f92672">){</span>
         log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Processing with paypal for amount {} with securityCode {}&#34;</span><span style="color:#f92672">,</span> amount<span style="color:#f92672">,</span> securityCode<span style="color:#f92672">);</span>
@@ -324,6 +330,7 @@
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pay</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> amount<span style="color:#f92672">,</span> Order order<span style="color:#f92672">);</span>
 <span style="color:#f92672">}</span>
 
+<span style="color:#a6e22e">@Slf4j</span>
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DebitPaymentService</span> <span style="color:#66d9ef">extends</span> PaymentService<span style="color:#f92672">{</span>
     <span style="color:#66d9ef">private</span> String securityCode<span style="color:#f92672">;</span>
     <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">DebitPaymentService</span><span style="color:#f92672">(</span>String securityCode<span style="color:#f92672">){</span>
@@ -338,6 +345,7 @@
 
 <span style="color:#f92672">}</span>
 
+<span style="color:#a6e22e">@Slf4j</span>
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CreditPaymentService</span> <span style="color:#66d9ef">extends</span> PaymentService<span style="color:#f92672">{</span>
     <span style="color:#66d9ef">private</span> String securityCode<span style="color:#f92672">;</span>
     <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">DebitPaymentService</span><span style="color:#f92672">(</span>String securityCode<span style="color:#f92672">){</span>
@@ -350,6 +358,7 @@
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
 
+<span style="color:#a6e22e">@Slf4j</span>
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaypalPaymentService</span> <span style="color:#66d9ef">extends</span> PaymentService<span style="color:#f92672">{</span>
     <span style="color:#66d9ef">private</span> String email<span style="color:#f92672">;</span>
     <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">DebitPaymentService</span><span style="color:#f92672">(</span>String email<span style="color:#f92672">){</span>
