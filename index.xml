@@ -26,5 +26,14 @@
    social media name social media link     linkedIn https://www.linkedin.com/in/babak-ahmadi-2b6699b8   twitter https://twitter.com/babakahmadi87   github https://github.com/babakahmadi   gitlab https://gitlab.com/babakahmadiabpardeh   stackoverflow https://stackoverflow.com/users/431706/babak    </description>
     </item>
     
+    <item>
+      <title>Solid Principles</title>
+      <link>https://babakahmadi.github.io/post/post_000_solidprinciple/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://babakahmadi.github.io/post/post_000_solidprinciple/</guid>
+      <description>As a programmer, I review a lot of codes(specially in java) and I saw a lot of problems in them. One of the most common problems that I saw is based on the SOLID principles. You know, when I started programming with java, I had these kind of problems too and I didn&amp;rsquo;t know these principles but after knowing that, my codes were better than before and I think these kind of principles prevents us from very large number of issues in programming, so I think it would be great to write a blog about it.</description>
+    </item>
+    
   </channel>
 </rss>

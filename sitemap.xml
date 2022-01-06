@@ -69,4 +69,16 @@
     <priority>0.5</priority>
   </url>
   
+  <url>
+    <loc>https://babakahmadi.github.io/tags/scene/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://babakahmadi.github.io/post/post_000_solidprinciple/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
 </urlset>

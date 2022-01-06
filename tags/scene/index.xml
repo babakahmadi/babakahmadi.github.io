@@ -5,15 +5,14 @@
     <link>https://babakahmadi.github.io/tags/scene/</link>
     <description>Recent content in scene on Babak Ahmadi&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 09 Oct 2021 10:58:08 -0400</lastBuildDate><atom:link href="https://babakahmadi.github.io/tags/scene/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://babakahmadi.github.io/tags/scene/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>First Blog</title>
-      <link>https://babakahmadi.github.io/post/chapter-1/</link>
-      <pubDate>Sat, 09 Oct 2021 10:58:08 -0400</pubDate>
+      <title>Solid Principles</title>
+      <link>https://babakahmadi.github.io/post/post_000_solidprinciple/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://babakahmadi.github.io/post/chapter-1/</guid>
-      <description>My first blog.</description>
+      <guid>https://babakahmadi.github.io/post/post_000_solidprinciple/</guid>
+      <description>As a programmer, I review a lot of codes(specially in java) and I saw a lot of problems in them. One of the most common problems that I saw is based on the SOLID principles. You know, when I started programming with java, I had these kind of problems too and I didn&amp;rsquo;t know these principles but after knowing that, my codes were better than before and I think these kind of principles prevents us from very large number of issues in programming, so I think it would be great to write a blog about it.</description>
     </item>
     
   </channel>

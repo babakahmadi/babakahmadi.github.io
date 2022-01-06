@@ -16,5 +16,14 @@
       <description>You know, sorting is one of the most famous algorithms that used in IT world. Here I want to do some discussion about some of sorting algorithms and at the same time, use some ideas to optimize sorting algrithm in the specific problem. Optimization is the heart of data and it can be used distinctively based on the application.</description>
     </item>
     
+    <item>
+      <title>Solid Principles</title>
+      <link>https://babakahmadi.github.io/post/post_000_solidprinciple/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://babakahmadi.github.io/post/post_000_solidprinciple/</guid>
+      <description>As a programmer, I review a lot of codes(specially in java) and I saw a lot of problems in them. One of the most common problems that I saw is based on the SOLID principles. You know, when I started programming with java, I had these kind of problems too and I didn&amp;rsquo;t know these principles but after knowing that, my codes were better than before and I think these kind of principles prevents us from very large number of issues in programming, so I think it would be great to write a blog about it.</description>
+    </item>
+    
   </channel>
 </rss>
