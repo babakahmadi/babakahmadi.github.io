@@ -34,7 +34,7 @@
 <meta itemprop="name" content="Solid Principles">
 <meta itemprop="description" content="Solid Principles">
 
-<meta itemprop="wordCount" content="1035">
+<meta itemprop="wordCount" content="1943">
 
 
 
@@ -224,7 +224,7 @@
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>As a programmer, I reviewed a lot of codes(specially in java) and I saw a lot of problems in them. One of the most common problems that I saw is violating the SOLID principles. You know, when I started programming with java, I had these kind of problems too and I didn&rsquo;t know these principles but after knowing that, my codes were better than before and I think these kind of principles prevents us from very large number of issues in programming and help us to scale our code, so it would be great to write a blog about it. Here, I try to define these principles and tell some examples that would be good for better understanding (all my examples will be in java).</p>
-<p><strong>hint</strong>: I used the lombok annotations, to know about that you can check this <a href="https://www.baeldung.com/intro-to-project-lombok">lombok</a></p>
+<p><strong>hint</strong>: I used the lombok annotations, to know about that you can check <a href="https://www.baeldung.com/intro-to-project-lombok">this</a></p>
 <p>SOLID is acronym of five principles in object oriented design which is declared by <a href="https://en.wikipedia.org/wiki/Robert_C._Martin">uncle Bob</a>.  SOLID principles stands for:</p>
 <ul>
 <li><strong>S</strong> ingle-Responsiblity</li>
@@ -286,7 +286,7 @@
 <span style="color:#f92672">}</span>
 </code></pre></div><p>Here, we create a <code>PaymentService</code> class that is responsible for the pay method and we separated <code>pay</code> method to two methods named <code>payCredit</code> and <code>payDebit</code>. so we resolved the problem with <code>Single Responsiblity</code>. It helps us to reuse these classes much easier in our service. The other thing is that if we want to add some other payment methods later, we don&rsquo;t need to add these methods to the order class.</p>
 <h3 id="__open-closed__"><strong>Open-Closed</strong></h3>
-<p><em>classes should be open for extension and closed to modification.</em> Lets take a look to the <code>PaymentService</code> class. If we want to add a new payment method to the <code>PaymentService</code> we need to modify the class. This is the main reason to disrupt the <code>Open-Closed</code> principle. To resolve it we need to extract each payment method as a class and to add new payment method we can create the new one.</p>
+<p><em>classes should be open for extension and closed to modification.</em> Lets take a look at the <code>PaymentService</code> class. If we want to add a new payment method to the <code>PaymentService</code> we need to modify the class. This is the main reason to disrupt the <code>Open-Closed</code> principle. To resolve it we need to extract each payment method as a class and to add new payment method we can create the new one.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaymentService</span><span style="color:#f92672">{</span>
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pay</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> amount<span style="color:#f92672">,</span> Order order<span style="color:#f92672">,</span> String securityCode<span style="color:#f92672">);</span>
 <span style="color:#f92672">}</span>
@@ -348,7 +348,7 @@
 <span style="color:#a6e22e">@Slf4j</span>
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CreditPaymentService</span> <span style="color:#66d9ef">extends</span> PaymentService<span style="color:#f92672">{</span>
     <span style="color:#66d9ef">private</span> String securityCode<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">DebitPaymentService</span><span style="color:#f92672">(</span>String securityCode<span style="color:#f92672">){</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">CreditPaymentService</span><span style="color:#f92672">(</span>String securityCode<span style="color:#f92672">){</span>
         <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">securityCode</span> <span style="color:#f92672">=</span> securityCode<span style="color:#f92672">;</span>
     <span style="color:#f92672">}</span>
     <span style="color:#a6e22e">@Override</span>
@@ -361,7 +361,7 @@
 <span style="color:#a6e22e">@Slf4j</span>
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaypalPaymentService</span> <span style="color:#66d9ef">extends</span> PaymentService<span style="color:#f92672">{</span>
     <span style="color:#66d9ef">private</span> String email<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">DebitPaymentService</span><span style="color:#f92672">(</span>String email<span style="color:#f92672">){</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">PaypalPaymentService</span><span style="color:#f92672">(</span>String email<span style="color:#f92672">){</span>
         <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">email</span> <span style="color:#f92672">=</span> email<span style="color:#f92672">;</span>
     <span style="color:#f92672">}</span>
     <span style="color:#a6e22e">@Override</span>
@@ -371,10 +371,236 @@
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
 
-</code></pre></div><p>now we substituted the method in child class based on the parent class. <code>Lisokofpth-substitution</code> resolved.</p>
-<p>TODO&hellip;</p>
+</code></pre></div><p>now we substituted the method in child class based on the parent class. <code>Lisokofpth-substitution</code> (what on earth?) resolved.</p>
 <h3 id="__interface-segregation__"><strong>Interface-Segregation</strong></h3>
-<h3 id="__dependency-inversion__"><strong>Dependency Inversion</strong></h3>
+<p><em>Clients should not be forced to depend on methods that they do not use.</em>
+Wow, we come this far, it&rsquo;s great. Our service is great, but it would be great if we add a verifier for the payment. so we can add this verifier method in the parent class:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaymentService</span><span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pay</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> amount<span style="color:#f92672">,</span> Order order<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">verify</span><span style="color:#f92672">();</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><p>and so other class must implement this method, but as you know, we don&rsquo;t have verifier for credit method. so we can add exception for that method in the <code>DebitPaymentService</code> and the other change is in pay method, we do pay after verify it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Slf4j</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DebitPaymentService</span> <span style="color:#66d9ef">extends</span> PaymentService<span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> String securityCode<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">DebitPaymentService</span><span style="color:#f92672">(</span>String securityCode<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">securityCode</span> <span style="color:#f92672">=</span> securityCode<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">verify</span><span style="color:#f92672">(){</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;email sent to the user email&#34;</span><span style="color:#f92672">);</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;user open the link in the email and verified&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pay</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> amount<span style="color:#f92672">,</span> Order order<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(!</span>verify<span style="color:#f92672">()){</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> NotVerifiedException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;payment not verified&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Processing with debit for amount {}  with security code {}&#34;</span><span style="color:#f92672">,</span> amount<span style="color:#f92672">,</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">securityCode</span><span style="color:#f92672">);</span>
+        order<span style="color:#f92672">.</span><span style="color:#a6e22e">setStatus</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;paid&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+
+<span style="color:#a6e22e">@Slf4j</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CreditPaymentService</span> <span style="color:#66d9ef">extends</span> PaymentService<span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> String securityCode<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">CreditPaymentService</span><span style="color:#f92672">(</span>String securityCode<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">securityCode</span> <span style="color:#f92672">=</span> securityCode<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">verify</span><span style="color:#f92672">(){</span>
+        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> NotAvaialbleException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;this payment method has no any verifier&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pay</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> amount<span style="color:#f92672">,</span> Order order<span style="color:#f92672">){</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Processing with credit for amount {} with securityCode {}&#34;</span><span style="color:#f92672">,</span> amount<span style="color:#f92672">,</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">securityCode</span><span style="color:#f92672">);</span>
+        order<span style="color:#f92672">.</span><span style="color:#a6e22e">setStatus</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;paid&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#a6e22e">@Slf4j</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaypalPaymentService</span> <span style="color:#66d9ef">extends</span> PaymentService<span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> String email<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">PaypalPaymentService</span><span style="color:#f92672">(</span>String email<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">email</span> <span style="color:#f92672">=</span> email<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">verify</span><span style="color:#f92672">(){</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;email sent to the user email&#34;</span><span style="color:#f92672">);</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;user open the link in the email and verified&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pay</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> amount<span style="color:#f92672">,</span> Order order<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(!</span>verify<span style="color:#f92672">()){</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> NotVerifiedException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;payment not verified&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Processing with paypal for amount {} with email {}&#34;</span><span style="color:#f92672">,</span> amount<span style="color:#f92672">,</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">email</span><span style="color:#f92672">);</span>
+        order<span style="color:#f92672">.</span><span style="color:#a6e22e">setStatus</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;paid&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>but not only we have violated the <code>Interface segregation</code> (we forced the <code>CreditPaymentService</code> to implement the verify method) but also we violated the previous principle <code>Liskov substitution</code>. To resolve this issue we can use <code>composition</code>. we can create a new classes that can handle the verification.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaymentEmailVerifier</span><span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">verify</span><span style="color:#f92672">(){</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;email sent to the user email&#34;</span><span style="color:#f92672">);</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;user open the link in the email and verified&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaymentSmsVerifier</span><span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">verify</span><span style="color:#f92672">(){</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;message sent to the user phone&#34;</span><span style="color:#f92672">);</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;user opens the message and copy the code&#34;</span><span style="color:#f92672">);</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;user inserts the code and verified&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>for  <code>DebitPaymentService</code> we can add the <code>PaymentSmsVerifier</code> and for the <code>PaypalPaymentService</code> we can use the <code>PaymentEmailVerifier</code>  and at the end our implementation is like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaymentService</span><span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pay</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> amount<span style="color:#f92672">,</span> Order order<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#a6e22e">@Slf4j</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DebitPaymentService</span> <span style="color:#66d9ef">extends</span> PaymentService<span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> String securityCode<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> PaymentVerifier verifier<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">DebitPaymentService</span><span style="color:#f92672">(</span>String securityCode<span style="color:#f92672">,</span> PaymentSmsVerifier verifier<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">securityCode</span> <span style="color:#f92672">=</span> securityCode<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">verifier</span> <span style="color:#f92672">=</span> verifer<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pay</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> amount<span style="color:#f92672">,</span> Order order<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(!</span>verifier<span style="color:#f92672">.</span><span style="color:#a6e22e">verify</span><span style="color:#f92672">()){</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> NotVerifiedException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;payment not verified&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Processing with debit for amount {}  with security code {}&#34;</span><span style="color:#f92672">,</span> amount<span style="color:#f92672">,</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">securityCode</span><span style="color:#f92672">);</span>
+        order<span style="color:#f92672">.</span><span style="color:#a6e22e">setStatus</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;paid&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+
+<span style="color:#a6e22e">@Slf4j</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CreditPaymentService</span> <span style="color:#66d9ef">extends</span> PaymentService<span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> String securityCode<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">CreditPaymentService</span><span style="color:#f92672">(</span>String securityCode<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">securityCode</span> <span style="color:#f92672">=</span> securityCode<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pay</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> amount<span style="color:#f92672">,</span> Order order<span style="color:#f92672">){</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Processing with credit for amount {} with securityCode {}&#34;</span><span style="color:#f92672">,</span> amount<span style="color:#f92672">,</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">securityCode</span><span style="color:#f92672">);</span>
+        order<span style="color:#f92672">.</span><span style="color:#a6e22e">setStatus</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;paid&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#a6e22e">@Slf4j</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaypalPaymentService</span> <span style="color:#66d9ef">extends</span> PaymentService<span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> String email<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> PaymentVerifier verifier<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">DebitPaymentService</span><span style="color:#f92672">(</span>String email<span style="color:#f92672">,</span> PaymentEmailVerifier verifier<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">email</span> <span style="color:#f92672">=</span> email<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">verifier</span> <span style="color:#f92672">=</span> verifer<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pay</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> amount<span style="color:#f92672">,</span> Order order<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(!</span>verifier<span style="color:#f92672">.</span><span style="color:#a6e22e">verify</span><span style="color:#f92672">()){</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> NotVerifiedException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;payment not verified&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Processing with paypal for amount {} with email {}&#34;</span><span style="color:#f92672">,</span> amount<span style="color:#f92672">,</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">email</span><span style="color:#f92672">);</span>
+        order<span style="color:#f92672">.</span><span style="color:#a6e22e">setStatus</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;paid&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="__dependency-inversion__"><strong>Dependency Inversion</strong></h3>
+<p><em>High-level modules should not depend on low-level modules. Both should depend on the abstraction. Abstractions should not depend on details. Details should depend on abstractions.</em>
+As the definition says, we violated this principle because our payment services are depends on the specific verfiers. To resolve that we can add new interface named <code>PaymentVerifier</code> and used that in our payment services. (it&rsquo;s great, this can help us to use any kind of verifier we need in our payment service, suppose in future we need to add google authenticator for our service, it will be a peice of cake).
+Here&rsquo;s the last code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">PaymentVerifier</span><span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">verify</span><span style="color:#f92672">();</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaymentEmailVerifier</span> <span style="color:#66d9ef">extends</span> PaymentVerifier<span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">verify</span><span style="color:#f92672">(){</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;email sent to the user email&#34;</span><span style="color:#f92672">);</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;user open the link in the email and verified&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaymentSmsVerifier</span> <span style="color:#66d9ef">extends</span> PaymentVerifier<span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">verify</span><span style="color:#f92672">(){</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;message sent to the user phone&#34;</span><span style="color:#f92672">);</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;user opens the message and copy the code&#34;</span><span style="color:#f92672">);</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;user inserts the code and verified&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaymentService</span><span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pay</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> amount<span style="color:#f92672">,</span> Order order<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#a6e22e">@Slf4j</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DebitPaymentService</span> <span style="color:#66d9ef">extends</span> PaymentService<span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> String securityCode<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> PaymentVerifier verifier<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">DebitPaymentService</span><span style="color:#f92672">(</span>String securityCode<span style="color:#f92672">,</span> PaymentVerifier verifier<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">securityCode</span> <span style="color:#f92672">=</span> securityCode<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">verifier</span> <span style="color:#f92672">=</span> verifer<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pay</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> amount<span style="color:#f92672">,</span> Order order<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(!</span>verifier<span style="color:#f92672">.</span><span style="color:#a6e22e">verify</span><span style="color:#f92672">()){</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> NotVerifiedException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;payment not verified&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Processing with debit for amount {}  with security code {}&#34;</span><span style="color:#f92672">,</span> amount<span style="color:#f92672">,</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">securityCode</span><span style="color:#f92672">);</span>
+        order<span style="color:#f92672">.</span><span style="color:#a6e22e">setStatus</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;paid&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+
+<span style="color:#a6e22e">@Slf4j</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CreditPaymentService</span> <span style="color:#66d9ef">extends</span> PaymentService<span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> String securityCode<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">CreditPaymentService</span><span style="color:#f92672">(</span>String securityCode<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">securityCode</span> <span style="color:#f92672">=</span> securityCode<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pay</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> amount<span style="color:#f92672">,</span> Order order<span style="color:#f92672">){</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Processing with credit for amount {} with securityCode {}&#34;</span><span style="color:#f92672">,</span> amount<span style="color:#f92672">,</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">securityCode</span><span style="color:#f92672">);</span>
+        order<span style="color:#f92672">.</span><span style="color:#a6e22e">setStatus</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;paid&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#a6e22e">@Slf4j</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaypalPaymentService</span> <span style="color:#66d9ef">extends</span> PaymentService<span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> String email<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> PaymentVerifier verifier<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">DebitPaymentService</span><span style="color:#f92672">(</span>String email<span style="color:#f92672">,</span> PaymentVerifier verifier<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">email</span> <span style="color:#f92672">=</span> email<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">verifier</span> <span style="color:#f92672">=</span> verifer<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pay</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> amount<span style="color:#f92672">,</span> Order order<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(!</span>verifier<span style="color:#f92672">.</span><span style="color:#a6e22e">verify</span><span style="color:#f92672">()){</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> NotVerifiedException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;payment not verified&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Processing with paypal for amount {} with email {}&#34;</span><span style="color:#f92672">,</span> amount<span style="color:#f92672">,</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">email</span><span style="color:#f92672">);</span>
+        order<span style="color:#f92672">.</span><span style="color:#a6e22e">setStatus</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;paid&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><p><a href="https://medium.com/backticks-tildes/the-s-o-l-i-d-principles-in-pictures-b34ce2f1e898">Here</a>, we have a very good explanation with painting, take look. See you soon :-)</p>
 <ul class="pa0">
   
    <li class="list">
