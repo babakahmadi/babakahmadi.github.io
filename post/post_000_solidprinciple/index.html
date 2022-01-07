@@ -34,7 +34,7 @@
 <meta itemprop="name" content="Solid Principles">
 <meta itemprop="description" content="Solid Principles">
 
-<meta itemprop="wordCount" content="1944">
+<meta itemprop="wordCount" content="1943">
 
 
 
@@ -520,13 +520,13 @@ Wow, we come this far, it&rsquo;s great. Our service is great, but it would be g
 <span style="color:#f92672">}</span>
 </code></pre></div><h3 id="__dependency-inversion__"><strong>Dependency Inversion</strong></h3>
 <p><em>High-level modules should not depend on low-level modules. Both should depend on the abstraction. Abstractions should not depend on details. Details should depend on abstractions.</em>
-As the definition says, we violated this principle because our payment services are depends on the specific verfiers. To resolve that we can add new interface named <code>PaymentVerifier</code> and used that in our payment services. (it&rsquo;s great, this can help us to use any kind of verifier we need in our payment service, suppose in future we need to add google authenticator for our service, it will be a peice of cake).
+As the definition says, we violated this principle because our payment services depend on the specific verfiers. To resolve that we can add new interface named <code>PaymentVerifier</code> and used that in our payment services. (it&rsquo;s great, this can help us to use any kind of verifier we need in our payment service, suppose in future we need to add google authenticator for our service, it will be a peice of cake).
 Here&rsquo;s the last code:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">PaymentVerifier</span><span style="color:#f92672">{</span>
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">verify</span><span style="color:#f92672">();</span>
 <span style="color:#f92672">}</span>
 
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaymentEmailVerifier</span> <span style="color:#66d9ef">extends</span> PaymentVerifier<span style="color:#f92672">{</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaymentEmailVerifier</span> <span style="color:#66d9ef">implements</span> PaymentVerifier<span style="color:#f92672">{</span>
     <span style="color:#a6e22e">@Override</span>
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">verify</span><span style="color:#f92672">(){</span>
         log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;email sent to the user email&#34;</span><span style="color:#f92672">);</span>
@@ -535,7 +535,7 @@ Here&rsquo;s the last code:</p>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
 
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaymentSmsVerifier</span> <span style="color:#66d9ef">extends</span> PaymentVerifier<span style="color:#f92672">{</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaymentSmsVerifier</span> <span style="color:#66d9ef">implements</span> PaymentVerifier<span style="color:#f92672">{</span>
     <span style="color:#a6e22e">@Override</span>
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">verify</span><span style="color:#f92672">(){</span>
         log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;message sent to the user phone&#34;</span><span style="color:#f92672">);</span>
