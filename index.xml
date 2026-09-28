@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Babak Ahmadi on Babak Ahmadi&#39;s Blog</title>
-    <link>https://babakahmadi.github.io/</link>
-    <description>Recent content in Babak Ahmadi on Babak Ahmadi&#39;s Blog</description>
+    <title>Babak Ahmadi</title>
+    <link>https://babakahmadi.github.io/hugo-example-site/</link>
+    <description>Recent content on Babak Ahmadi</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 02 Oct 2021 12:00:00 -0500</lastBuildDate><atom:link href="https://babakahmadi.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Contact</title>
-      <link>https://babakahmadi.github.io/contact/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://babakahmadi.github.io/contact/</guid>
-      <description>You can follow my social media contact with below link:
-   social media name social media link     linkedIn https://www.linkedin.com/in/babak-ahmadi-2b6699b8   twitter https://twitter.com/babakahmadi87   github https://github.com/babakahmadi   gitlab https://gitlab.com/babakahmadiabpardeh   stackoverflow https://stackoverflow.com/users/431706/babak    </description>
-    </item>
+    <language>en</language>
+    <copyright>© 2026 Babak Ahmadi</copyright>
+    <lastBuildDate>Wed, 17 Nov 2021 10:58:08 -0400</lastBuildDate><atom:link href="https://babakahmadi.github.io/hugo-example-site/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Solid Principles</title>
-      <link>https://babakahmadi.github.io/post/post_000_solidprinciple/</link>
+      <link>https://babakahmadi.github.io/hugo-example-site/post/solid-principles/</link>
+      <pubDate>Wed, 17 Nov 2021 10:58:08 -0400</pubDate>
+      
+      <guid>https://babakahmadi.github.io/hugo-example-site/post/solid-principles/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>https://babakahmadi.github.io/hugo-example-site/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://babakahmadi.github.io/post/post_000_solidprinciple/</guid>
-      <description>As a programmer, I reviewed a lot of codes(specially in java) and I saw a lot of problems in them. One of the most common problems that I saw is violating the SOLID principles. You know, when I started programming with java, I had these kind of problems too and I didn&amp;rsquo;t know these principles but after knowing that, my codes were better than before and I think these kind of principles prevents us from very large number of issues in programming and help us to scale our code, so it would be great to write a blog about it.</description>
+      <guid>https://babakahmadi.github.io/hugo-example-site/contact/</guid>
+      <description></description>
+      
     </item>
     
   </channel>
